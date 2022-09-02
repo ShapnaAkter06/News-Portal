@@ -12,7 +12,7 @@ const displayAllCatagories = (catagories) =>{
         const catagoryDiv = document.createElement('div');
         catagoryDiv.classList.add('catagory')
         catagoryDiv.innerHTML =`
-        <div onclick="loadCatagoriesDetails('${catagory.catagory_id}')">
+        <div onclick="loadCatagoriesDetails('${catagory.category_id}')">
         <a>${catagory.category_name}</a>
         </div>
         `
@@ -20,11 +20,11 @@ const displayAllCatagories = (catagories) =>{
     });
 }
 const loadCatagoriesDetails = async(catagoryId) => {
-    console.log(catagoryId)
+    // console.log(catagoryId)
     const url = (`https://openapi.programming-hero.com/api/news/category/${catagoryId}`)
     const response = await fetch(url);
     const data = await response.json();
-    displayCatagoriesDetails(data.data)
+    console.log(data.data)
 }
 const displayCatagoriesDetails = (catagoriesId) => {
     const catagoryDetailsContainer = document.getElementById('catagory-details-container');
