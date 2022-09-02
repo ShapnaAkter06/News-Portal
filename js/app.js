@@ -24,29 +24,30 @@ const loadCatagoriesDetails = async(catagoryId) => {
     const url = (`https://openapi.programming-hero.com/api/news/category/${catagoryId}`)
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data.data)
+    displayCatagoriesDetails(data.data)
 }
-const displayCatagoriesDetails = (catagoriesId) => {
+const displayCatagoriesDetails = (catagory) => {
+    console.log(catagory)
     const catagoryDetailsContainer = document.getElementById('catagory-details-container');
     const catagoryDetailsDiv = document.createElement('div');
     catagoryDetailsDiv.classList.add('card');
     catagoryDetailsDiv.innerHTML = `
     <div class="row g-0">
         <div class="col-md-4">
-        <img src="${catagoriesId.thumbnail_url}" class="card-img-top" alt="...">
+        <img src="${catagory.thumbnail_url}" class="card-img-top" alt="...">
         </div>
         <div class="col-md-8">
             <div class="card-body">
-            <h5 class="card-title">${catagoriesId.title}</h5>
-            <p class="card-text">${catagoriesId.details.slice(0, 300) + '...'}</p>
+            <h5 class="card-title">${catagory.title}</h5>
+            <p class="card-text">${catagory.details.slice(0, 300) + '...'}</p>
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     <div class="col">
-                    <img src="${catagoriesId.author.img}" class="card-img-top" style = "width:50px" alt="...">
-                    <h6 class="card-title">${catagoriesId.author.name}</h6>
+                    <img src="${catagory.author.img}" class="card-img-top" style = "width:50px" alt="...">
+                    <h6 class="card-title">${catagory.author.name}</h6>
                     </div>
                     <div class="col">
                         <i class="fa-solid fa-eye"></i>
-                        <span>${catagoriesId.total_view}</span>
+                        <span>${catagory.total_view}</span>
                     </div>
                     <div class="col">
                         <i class="fa-regular fa-star"></i> 
