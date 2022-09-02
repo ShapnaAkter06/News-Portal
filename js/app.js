@@ -27,11 +27,15 @@ const loadCatagoriesDetails = async(catagoryId) => {
     displayCatagoriesDetails(data.data)
 }
 const displayCatagoriesDetails = (catagoriesNews) => {
+    const x = [];
+    x.push(catagoriesNews);
+    // console.log(x[0].length);
+    const y = document.getElementById('catagory-length').innerText = `${x[0].length} items found for catagory entertainment`;
     // console.log(catagoriesNews)
+    const catagoryDetailsContainer = document.getElementById('catagory-details-container');
+    catagoryDetailsContainer.textContent = '';
     catagoriesNews.forEach(catagory => {
         // console.log(catagory)
-        const catagoryDetailsContainer = document.getElementById('catagory-details-container');
-        catagoryDetailsContainer.textContent = '';
         const catagoryDetailsDiv = document.createElement('div');
         catagoryDetailsDiv.classList.add('card');
         catagoryDetailsDiv.innerHTML = `
@@ -47,6 +51,7 @@ const displayCatagoriesDetails = (catagoriesNews) => {
                         <div class="col">
                         <img src="${catagory.author.img}" class="card-img-top" style = "width:50px" alt="...">
                         <h6 class="card-title">${catagory.author.name}</h6>
+                        <p class="small">${catagory.author.published_date}</p>
                         </div>
                         <div class="col">
                             <i class="fa-solid fa-eye"></i>
