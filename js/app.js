@@ -24,7 +24,7 @@ const loadCatagoriesDetails = async(catagoryId) => {
     const url = (`https://openapi.programming-hero.com/api/news/category/${catagoryId}`)
     const response = await fetch(url);
     const data = await response.json();
-    displayCatagoriesDetails(data.data[0])
+    displayCatagoriesDetails(data.data)
 }
 const displayCatagoriesDetails = (catagoriesId) => {
     const catagoryDetailsContainer = document.getElementById('catagory-details-container');
