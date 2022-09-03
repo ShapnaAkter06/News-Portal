@@ -3,7 +3,7 @@ const loadAllCatagories = async () => {
         const url = ("https://openapi.programming-hero.com/api/news/categories")
         const response = await fetch(url);
         const data = await response.json();
-        displayAllCatagories(data.data.news_category)
+        displayAllCatagories(data.data.news_category);
     } catch (e) {
         console.log(e)
     }   
@@ -33,6 +33,7 @@ const loadCatagoriesDetails = async(catagoryId) => {
    }
 }
 const displayCatagoriesDetails = (catagoriesNews) => {
+    document.getElementById('spinner').classList.remove('d-none')
     const x = [];
     x.push(catagoriesNews);
     const catagoryLength = document.getElementById('catagory-length').innerText = `${x[0].length} items found for catagory entertainment`;
@@ -83,6 +84,7 @@ const displayCatagoriesDetails = (catagoriesNews) => {
         `
         catagoryDetailsContainer.appendChild(catagoryDetailsDiv)
     })
+    document.getElementById('spinner').classList.add('d-none')
 }
 const loadNewsModal = async (id) => {
     const url = (`https://openapi.programming-hero.com/api/news/${id}`)

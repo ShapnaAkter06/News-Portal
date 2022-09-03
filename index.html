@@ -15,18 +15,27 @@
 <body>
     <!-- Header section -->
     <header>
-        <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand">
-                <img src="./image/news4.png" alt="" max-width="100%" height="30" class="d-inline-block align-text-top">
-                <span class="fw-bold fs-3">Today</span>
-              </a>
-              <div class="d-flex">
-                <a href="index.html" class="btn btn-outline-primary me-2">News</a>
-                <a href="blog.html" class="btn btn-outline-primary me-2">Blog</a>
-              </div>
-            </div>
-        </nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="./image/news4.png" alt="" max-width="100%" height="30" class="d-inline-block align-text-top">
+            <span class="fw-bold fs-3">Today</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link btn btn-outline-primary me-2">News</a>
+              </li>
+              <li class="nav-item">
+                <a href="blog.html" class="nav-link btn btn-outline-primary me-2" href="#">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <main class="container">
         <section>
@@ -35,21 +44,23 @@
           </div>
         </section>
         <section>
-            <div id="all-catagory" class="d-lg-flex justify-content-between">
-
-            </div>
-            <!-- spinner -->
-            <div id="spinner" class="spinner-grow d-none" role="status" style="margin-left: 50%">
+          <!-- spinner -->
+          <div class="text-center">
+            <div id="spinner" class="spinner-border d-none" role="status">
               <span class="visually-hidden"></span>
             </div>
+          </div>
+          <div id="all-catagory" class="d-lg-flex justify-content-between">
+
+          </div>    
         </section>
         <section>
-          <div id="catagory-details-container" class="mb-5" style="max-width: 100%;">
+        <div id="catagory-details-container" class="mb-5" style="max-width: 100%;">
             
-          </div>
+        </div>
          
-          <!-- Modal -->
-          <div class="modal fade" id="newsDetailsModal" tabindex="-1" aria-labelledby="newsDetailsModalLabel" aria-hidden="true">
+        <!-- Modal -->
+        <div class="modal fade" id="newsDetailsModal" tabindex="-1" aria-labelledby="newsDetailsModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
