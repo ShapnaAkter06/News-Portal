@@ -33,6 +33,9 @@ const loadCatagoriesDetails = async(catagoryId) => {
    }
 }
 const displayCatagoriesDetails = (catagoriesNews) => {
+    catagoriesNews.sort((a, b) => {
+        return b.total_view - a.total_view;
+    });
     document.getElementById('spinner').classList.remove('d-none')
     const x = [];
     x.push(catagoriesNews);
