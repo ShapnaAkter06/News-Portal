@@ -33,14 +33,20 @@ const loadCatagoriesDetails = async(catagoryId) => {
    }
 }
 const displayCatagoriesDetails = (catagoriesNews) => {
+    // spinner
+    document.getElementById('spinner').classList.remove('d-none');
+
+    // sort total view
     catagoriesNews.sort((a, b) => {
         return b.total_view - a.total_view;
     });
-    document.getElementById('spinner').classList.remove('d-none')
-    const x = [];
-    x.push(catagoriesNews);
-    const catagoryLength = document.getElementById('catagory-length').innerText = `${x[0].length} items found for catagory entertainment`;
+   
+    // total catagoryLength
+    const totalCatagoryLength = [];
+    totalCatagoryLength.push(catagoriesNews);
+    const catagoryLength = document.getElementById('catagory-length').innerText = `${totalCatagoryLength[0].length} items found for catagory entertainment`;
     
+
     const catagoryDetailsContainer = document.getElementById('catagory-details-container');
     catagoryDetailsContainer.textContent = '';
     catagoriesNews.forEach(catagory => {
