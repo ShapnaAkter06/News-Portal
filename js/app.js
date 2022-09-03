@@ -64,7 +64,7 @@ const displayCatagoriesDetails = (catagoriesNews) => {
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-solid fa-star-half-stroke"></i>
                         </div>
-                        <div class="col">
+                        <div class="col" data-bs-toggle="modal" data-bs-target="#newsModal">
                             <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
