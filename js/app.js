@@ -50,7 +50,7 @@ const displayCatagoriesDetails = (catagoriesNews) => {
                     <div class="row row-cols-1 row-cols-md-4 g-4">
                         <div class="col">
                         <img src="${catagory.author.img}" class="card-img-top" style = "width:50px" alt="...">
-                        <h6 class="card-title">${catagory.author.name}</h6>
+                        <h6 class="card-title">${catagory.author.name? catagory.author.name : "No name found"}</h6>
                         <p class="small">${catagory.author.published_date}</p>
                         </div>
                         <div class="col">
