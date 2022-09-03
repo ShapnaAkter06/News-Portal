@@ -11,7 +11,6 @@ const loadAllCatagories = async () => {
 const displayAllCatagories = (catagories) =>{
     const allCatagories = document.getElementById('all-catagory');
     catagories.forEach(catagory => {
-        console.log(catagory)
         const catagoryDiv = document.createElement('div');
         catagoryDiv.classList.add('catagory')
         catagoryDiv.innerHTML =`
@@ -43,7 +42,7 @@ const displayCatagoriesDetails = (catagoriesNews) => {
     // total catagoryLength
     const totalCatagoryLength = [];
     totalCatagoryLength.push(catagoriesNews);
-    const catagoryLength = document.getElementById('catagory-length').innerText = `${totalCatagoryLength[0].length} items found for catagory entertainment`;
+    document.getElementById('catagory-length').innerText = `${totalCatagoryLength[0].length} items found for catagory entertainment`;
     
 
     const catagoryDetailsContainer = document.getElementById('catagory-details-container');
