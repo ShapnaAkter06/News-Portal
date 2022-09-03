@@ -1,9 +1,12 @@
 const loadAllCatagories = async () => {
-    const url = ("https://openapi.programming-hero.com/api/news/categories")
-    const response = await fetch(url);
-    const data = await response.json();
-    displayAllCatagories(data.data.news_category)
-    
+    try {
+        const url = ("https://openapi.programming-hero.com/api/news/categories")
+        const response = await fetch(url);
+        const data = await response.json();
+        displayAllCatagories(data.data.news_category)
+    } catch (e) {
+        console.log(e)
+    }   
 }
 const displayAllCatagories = (catagories) =>{
     const allCatagories = document.getElementById('all-catagory');
@@ -20,22 +23,24 @@ const displayAllCatagories = (catagories) =>{
     });
 }
 const loadCatagoriesDetails = async(catagoryId) => {
-    // console.log(catagoryId)
+   try {
     const url = (`https://openapi.programming-hero.com/api/news/category/${catagoryId}`)
     const response = await fetch(url);
     const data = await response.json();
     displayCatagoriesDetails(data.data)
+   } catch (e) {
+    console.log(e)
+   }
 }
 const displayCatagoriesDetails = (catagoriesNews) => {
     const x = [];
     x.push(catagoriesNews);
-    // console.log(x[0].length);
-    const y = document.getElementById('catagory-length').innerText = `${x[0].length} items found for catagory entertainment`;
-    // console.log(catagoriesNews)
+    const catagoryLength = document.getElementById('catagory-length').innerText = `${x[0].length} items found for catagory entertainment`;
+    
     const catagoryDetailsContainer = document.getElementById('catagory-details-container');
     catagoryDetailsContainer.textContent = '';
     catagoriesNews.forEach(catagory => {
-        // console.log(catagory)
+       
         const catagoryDetailsDiv = document.createElement('div');
         catagoryDetailsDiv.classList.add('card');
         catagoryDetailsDiv.innerHTML = `
@@ -80,16 +85,13 @@ const displayCatagoriesDetails = (catagoriesNews) => {
     })
 }
 const loadNewsModal = async (id) => {
-    console.log(id)
     const url = (`https://openapi.programming-hero.com/api/news/${id}`)
     const response = await fetch(url);
     const data = await response.json();
-    // console.log(data.data[0])
     displayModalNews(data.data[0])
     
 }
 const displayModalNews = (news) =>{
-    // console.log(news)
     const modalTitle = document.getElementById('newsDetailsModalLabel');
     modalTitle.innerText = `${news.author.name? news.author.name : "No data available"}`;
     const newsDetails = document.getElementById('news-details');
