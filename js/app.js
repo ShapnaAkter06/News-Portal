@@ -1,4 +1,4 @@
-const loadAllCatagories = async () => {
+const loadAllCatagories = async() => {
     try {
         const url = ("https://openapi.programming-hero.com/api/news/categories")
         const response = await fetch(url);
@@ -8,7 +8,7 @@ const loadAllCatagories = async () => {
         console.log(e)
     }   
 }
-const displayAllCatagories = (catagories) =>{
+const displayAllCatagories = async(catagories) =>{
     const allCatagories = document.getElementById('all-catagory');
     catagories.forEach(catagory => {
         const catagoryDiv = document.createElement('div');
@@ -33,7 +33,7 @@ const loadCatagoriesDetails = async(catagoryId) => {
     console.log(e)
    }
 }
-const displayCatagoriesDetails = (catagoriesNews) => {
+const displayCatagoriesDetails = async(catagoriesNews) => {
     // sort total view
     catagoriesNews.sort((a, b) => {
         return b.total_view - a.total_view;
@@ -59,7 +59,7 @@ const displayCatagoriesDetails = (catagoriesNews) => {
             <div class="col-md-8">
                 <div class="card-body">
                 <h5 class="card-title">${catagory.title}</h5>
-                <p class="card-text">${catagory.details.slice(0, 300) + '...'}</p>
+                <p class="card-text">${catagory.details.length > 300? catagory.details.slice(0, 300) + '...' : catagory.details}</p>
                     <div class="row row-cols-1 row-cols-md-4 g-4">
                         <div class="col">
                         <img src="${catagory.author.img}" class="card-img-top" style = "width:50px" alt="...">
@@ -93,14 +93,17 @@ const displayCatagoriesDetails = (catagoriesNews) => {
     })
     document.getElementById('spinner').classList.add('d-none')
 }
-const loadNewsModal = async (id) => {
+const loadNewsModal = async(id) => {
+   try {
     const url = (`https://openapi.programming-hero.com/api/news/${id}`)
     const response = await fetch(url);
     const data = await response.json();
     displayModalNews(data.data[0])
-    
+   } catch (e) {
+        console.log(e)
+   }   
 }
-const displayModalNews = (news) =>{
+const displayModalNews = async(news) =>{
     const modalTitle = document.getElementById('newsDetailsModalLabel');
     modalTitle.innerText = `${news.author.name? news.author.name : "No data available"}`;
     const newsDetails = document.getElementById('news-details');
@@ -108,6 +111,8 @@ const displayModalNews = (news) =>{
         <img src="${news.author.img}" class="card-img-top" style = "width:100%" alt="No data available">
         <p> Publish Date : ${news.author.published_date? news.author.published_date : "No data available"}</P>
         <p> Total View : ${news.total_view? news.total_view : "No data available"}</P>
+        <p> Badge : ${news.rating.badge? news.rating.badge : "No data available"}</P>
+        <p> Rating Number : ${news.rating.number? news.rating.number : "No data available"}</P>
     `
 }
 loadAllCatagories()
