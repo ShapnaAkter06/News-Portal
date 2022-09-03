@@ -90,5 +90,13 @@ const loadNewsModal = async (id) => {
 }
 const displayModalNews = (news) =>{
     // console.log(news)
+    const modalTitle = document.getElementById('newsDetailsModalLabel');
+    modalTitle.innerText = `${news.author.name? news.author.name : "No data available"}`;
+    const newsDetails = document.getElementById('news-details');
+    newsDetails.innerHTML = `
+        <img src="${news.author.img}" class="card-img-top" style = "width:100%" alt="No data available">
+        <p> Publish Date : ${news.author.published_date? news.author.published_date : "No data available"}</P>
+        <p> Total View : ${news.total_view? news.total_view : "No data available"}</P>
+    `
 }
 loadAllCatagories()
