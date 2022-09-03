@@ -64,9 +64,11 @@ const displayCatagoriesDetails = (catagoriesNews) => {
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-solid fa-star-half-stroke"></i>
                         </div>
-                        <div class="col" data-bs-toggle="modal" data-bs-target="#newsModal">
-                            <i class="fa-solid fa-arrow-right"></i>
+                        <div class="col" onclick="loadNewsModal()">
+                        <i class="fa-solid fa-arrow-right" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">
+                        <i>    
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -74,5 +76,13 @@ const displayCatagoriesDetails = (catagoriesNews) => {
         `
         catagoryDetailsContainer.appendChild(catagoryDetailsDiv)
     })
+}
+const loadNewsModal = async () => {
+    const url = ("https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a")
+    const response = await fetch(url);
+    const data = await response.json();
+    // console.log(data.data[0])
+    displayModalNews(data.data[0])
+    
 }
 loadAllCatagories()
