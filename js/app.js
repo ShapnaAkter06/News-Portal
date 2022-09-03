@@ -23,6 +23,8 @@ const displayAllCatagories = (catagories) =>{
     });
 }
 const loadCatagoriesDetails = async(catagoryId) => {
+     // spinner
+    document.getElementById('spinner').classList.remove('d-none');
    try {
     const url = (`https://openapi.programming-hero.com/api/news/category/${catagoryId}`)
     const response = await fetch(url);
@@ -33,9 +35,6 @@ const loadCatagoriesDetails = async(catagoryId) => {
    }
 }
 const displayCatagoriesDetails = (catagoriesNews) => {
-    // spinner
-    document.getElementById('spinner').classList.remove('d-none');
-
     // sort total view
     catagoriesNews.sort((a, b) => {
         return b.total_view - a.total_view;
